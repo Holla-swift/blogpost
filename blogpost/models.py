@@ -12,6 +12,17 @@ class Author(models.Model):
 
     def __str__(self):
         return self.user.username
+# Category
+class Category(models.Model):
+    title = models.CharField(max_length=20)
+    subtitle = models.CharField(max_length=20)
+    slug = models.SlugField()
+    thumbnail = models.ImageField()
+    
+    def __str__(self):
+        return self.title
+
+
 # Post
 class Post(models.Model):
     title = models.CharField(max_length=100)
@@ -26,7 +37,5 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-
-# Category
 
 
