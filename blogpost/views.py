@@ -1,10 +1,6 @@
 from django.shortcuts import render, redirect
 from django.db.models import Q
-from .models import (
-    Author,
-    Category,
-    Post
-)
+from .models import Post, Category, Author
 
 # Create your views here.
 def homepage(request):
