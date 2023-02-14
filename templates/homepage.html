@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{% load static %}
+
 <style>
   .cursor::after {
   display: block;
@@ -57,7 +59,7 @@
                   {{ category.title }}</h1>
                 <p class="leading-relaxed mb-3">
                   {{ category.subtitle }}</p>
-                <a href="{% url 'postlist' category.slug %}" class="rounded-lg hover:bg-pink-200 text-pink-500 inline-flex items-center">
+                <a href="{% url 'category_post_list' category.slug %}" class="rounded-lg hover:bg-pink-200 text-pink-500 inline-flex items-center">
                   Posts
                   <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M5 12h14"></path>
