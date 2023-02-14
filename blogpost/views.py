@@ -18,26 +18,27 @@ def homepage(request):
     }
     return render (request, 'homepage.html', context)
 
-def post(request):
+def post(request,slug):
+    post = Post.objects.get(slug=slug)
     context = {
         
     }
-    return render (request, 'homepage.html', context)
+    return render (request, 'post.html', context)
 
 def about(request):
-    context = {
-        
-    }
-    return render (request, 'homepage.html', context)
+    return render (request, 'about_page.html')
 
-def category_post_list(request):
+def category_post_list(request, slug):
+    category = Category.objects.get(slug=slug)
+    posts = Post.objects.order_by('-timestamp')
     context = {
-        
+        'posts': posts,
     }
-    return render (request, 'homepage.html', context)
+    return render (request, 'post_list.html', context)
 
 def all_posts(request):
+    posts = Post.objects.order_by('-timestamp')
     context = {
-        
+        'posts': posts,
     }
-    return render (request, 'homepage.html', context)
+    return render (request, 'all_posts.html', context)
