@@ -21,7 +21,7 @@ def homepage(request):
 def post(request,slug):
     post = Post.objects.get(slug=slug)
     context = {
-        
+        'post': post,
     }
     return render (request, 'post.html', context)
 
@@ -30,7 +30,7 @@ def about(request):
 
 def category_post_list(request, slug):
     category = Category.objects.get(slug=slug)
-    posts = Post.objects.order_by('-timestamp')
+    posts = Post.objects.filter(categories_in=[category])
     context = {
         'posts': posts,
     }

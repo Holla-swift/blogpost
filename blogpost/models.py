@@ -8,8 +8,6 @@ class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_picture = models.ImageField()
 
-
-
     def __str__(self):
         return self.user.username
 # Category
@@ -21,7 +19,6 @@ class Category(models.Model):
     
     def __str__(self):
         return self.title
-
 
 # Post
 class Post(models.Model):
