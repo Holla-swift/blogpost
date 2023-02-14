@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.db.models import Q
 from .models import (
     Author,
     Category,
@@ -42,3 +43,17 @@ def all_posts(request):
         'posts': posts,
     }
     return render (request, 'all_posts.html', context)
+
+#search
+def search(request):
+    queryset = Post.objects.all()
+    query = request.GET.get('q')
+    if query:
+        queryset = queryset.filter(
+            Q(title_icontains = query) |
+            Q(overview_icontains=query)
+        ).distinct()
+    context = {
+        'queryset': queryset
+    }
+    return render (request, 'search_results.html', context)

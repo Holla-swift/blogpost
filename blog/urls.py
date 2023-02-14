@@ -5,7 +5,7 @@ from blogpost.views import (
     homepage, 
     post, 
     about, 
-    #search, 
+    search, 
     category_post_list, 
     all_posts,
 )
@@ -17,4 +17,5 @@ urlpatterns = [
     path('about/', about, name = 'about'),
     path('postlist/<slug>', category_post_list, name = 'category_post_list'),
     path('post/', all_posts, name = 'all_posts'),
+    path('search/', search, name = 'search'),
 ]
