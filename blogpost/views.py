@@ -31,7 +31,7 @@ def about(request):
 
 def category_post_list(request, slug):
     category = Category.objects.get(slug=slug)
-    posts = Post.objects.filter(categories_in=[category])
+    posts = Post.objects.filter(categories__in=[category])
     context = {
         'posts': posts,
     }
@@ -50,8 +50,8 @@ def search(request):
     query = request.GET.get('q')
     if query:
         queryset = queryset.filter(
-            Q(title_icontains = query) |
-            Q(overview_icontains=query)
+            Q(title__icontains = query) |
+            Q(overview__icontains=query)
         ).distinct()
     context = {
         'queryset': queryset
